@@ -1,0 +1,21 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1020" />
+      <stop offset="100%" stop-color="#0F1D3A" />
+    </linearGradient>
+    <linearGradient id="neon2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" rx="36" fill="url(#bg2)" />
+  <circle cx="220" cy="140" r="120" fill="#22C55E" opacity="0.16" />
+  <circle cx="1020" cy="120" r="90" fill="#38BDF8" opacity="0.2" />
+  <rect x="140" y="240" width="920" height="240" rx="34" fill="#0B1224" stroke="url(#neon2)" />
+  <rect x="210" y="300" width="280" height="140" rx="24" fill="#111B33" />
+  <rect x="530" y="300" width="280" height="140" rx="24" fill="#111B33" />
+  <rect x="850" y="300" width="120" height="140" rx="24" fill="#111B33" />
+  <text x="600" y="170" text-anchor="middle" fill="#E2E8F0" font-size="32" font-family="Inter, system-ui, sans-serif" font-weight="700">Racing & Action</text>
+  <text x="600" y="205" text-anchor="middle" fill="#94A3B8" font-size="16" font-family="Inter, system-ui, sans-serif">Velocità, adrenalina, sfide</text>
+</svg>
