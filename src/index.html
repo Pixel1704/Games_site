@@ -79,8 +79,16 @@
 			.modal-close:hover{color:#fff;border-color:var(--accent)}
 			.modal-hero{background:linear-gradient(120deg,rgba(56,189,248,.25),rgba(139,92,246,.25));border-radius:var(--radius-md);padding:18px;margin-bottom:16px;border:1px solid rgba(56,189,248,.25)}
 			html[data-theme="light"] .modal-hero{background:var(--surface-2);border-color:var(--border)}
-			.modal-title{font-size:1.6rem;margin-bottom:6px}
+			.modal-cover{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(56,189,248,.35);background:linear-gradient(135deg,rgba(56,189,248,.2),rgba(139,92,246,.2));margin-bottom:14px;min-height:200px;display:flex;align-items:flex-end}
+			html[data-theme="light"] .modal-cover{background:linear-gradient(135deg,#dfe7f5,#f5f7fb);border-color:var(--border)}
+			.modal-cover img{width:100%;height:220px;object-fit:cover;display:block;transition:opacity .2s ease}
+			.modal-cover.is-fallback img{opacity:0}
+			.modal-cover-text{position:absolute;inset:auto 0 0 0;padding:14px 16px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff}
+			html[data-theme="light"] .modal-cover-text{background:linear-gradient(180deg,transparent,rgba(0,0,0,.4))}
+			.modal-title{font-size:1.6rem;margin-bottom:0}
 			.modal-subtitle{color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+			.modal-countdown{margin-top:10px;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:linear-gradient(135deg,#38bdf8,#8b5cf6);color:#fff;font-weight:700;box-shadow:0 12px 26px rgba(56,189,248,.3)}
+			html[data-theme="light"] .modal-countdown{box-shadow:0 12px 26px rgba(29,78,216,.2)}
 			.modal-desc{color:var(--muted);line-height:1.6}
 			.modal-tags{display:flex;flex-wrap:wrap;gap:6px}
 			.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -107,7 +115,7 @@
 			<section class="section" id="catalogo"><div class="container"><div class="section-title"><h2>Catalogo giochi per console</h2><span class="chip">Aggiornato al 04/02/2026</span></div><div class="filters"><input type="text" id="search" placeholder="Cerca un gioco..." /><select id="platform"><option value="">Tutte le console</option><option>Nintendo Switch</option><option>PS4</option><option>PS3</option><option>Nintendo 3DS</option><option>Game Boy</option><option>Xbox Series X|S</option><option>Xbox One</option><option>PC</option><option>Steam Deck</option><option>Wii U</option><option>PS2</option></select><select id="genre"><option value="">Tutti i generi</option><option>Action</option><option>RPG</option><option>Adventure</option><option>Sport</option><option>Indie</option><option>Racing</option><option>Strategy</option></select><select id="rating"><option value="">Rating minimo</option><option value="4">4 ★ o più</option><option value="4.5">4.5 ★ o più</option><option value="5">5 ★</option></select></div><div class="catalog-grid" id="catalog"></div></div></section>
 			<section class="section" id="community"><div class="container"><div class="section-title"><h2>Community e contenuti</h2><span class="chip">Guide • Stream • News</span></div><div class="catalog-grid"><div class="stat"><h3>Hub Creator</h3><p class="muted">Recensioni curate e classifiche dinamiche.</p></div><div class="stat"><h3>Notifiche personalizzate</h3><p class="muted">Segui i franchise e resta aggiornato.</p></div><div class="stat"><h3>Trend per console</h3><p class="muted">Scopri cosa sta giocando la community.</p></div></div></div></section>
 		</main>
-		<div class="modal-overlay" id="game-modal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h3>Dettagli gioco</h3><button class="modal-close" type="button" id="modal-close">Chiudi</button></div><div class="modal-hero"><h3 class="modal-title" id="modal-title">Titolo gioco</h3><div class="modal-subtitle"><span class="chip" id="modal-platform">Console</span><span class="chip" id="modal-genre">Genere</span><span class="chip" id="modal-rating">Valutazione</span><span class="chip" id="modal-price">Prezzo</span></div></div><div class="modal-body"><p class="modal-desc" id="modal-description"></p><button class="btn" id="modal-toggle" aria-expanded="false">Descrizione</button><p class="modal-desc" id="modal-details" style="display:none"></p><div><p class="muted" style="margin-bottom:8px">Tag</p><div class="modal-tags" id="modal-tags"></div></div><div class="modal-actions"><button class="btn">Aggiungi alla wishlist</button><a class="btn btn-primary" href="valuta.html">Vedi recensioni</a></div></div></div></div>
+		<div class="modal-overlay" id="game-modal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h3>Dettagli gioco</h3><button class="modal-close" type="button" id="modal-close">Chiudi</button></div><div class="modal-hero"><div class="modal-cover" id="modal-cover"><img id="modal-image" alt="" /><div class="modal-cover-text"><h3 class="modal-title" id="modal-title">Titolo gioco</h3></div></div><div class="modal-subtitle"><span class="chip" id="modal-platform">Console</span><span class="chip" id="modal-genre">Genere</span><span class="chip" id="modal-rating">Valutazione</span><span class="chip" id="modal-price">Prezzo</span></div><div class="modal-countdown" id="modal-countdown" hidden></div></div><div class="modal-body"><p class="modal-desc" id="modal-description"></p><button class="btn" id="modal-toggle" aria-expanded="false">Descrizione</button><p class="modal-desc" id="modal-details" style="display:none"></p><div><p class="muted" style="margin-bottom:8px">Tag</p><div class="modal-tags" id="modal-tags"></div></div><div class="modal-actions"><button class="btn">Aggiungi alla wishlist</button><a class="btn btn-primary" href="valuta.html">Vedi recensioni</a></div></div></div></div>
 		<div class="modal-overlay" id="auth-modal" aria-hidden="true">
 			<div class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
 				<div class="modal-header">
@@ -132,7 +140,7 @@
 		<footer><div class="container footer-grid"><div><div class="logo"><span class="logo-badge">GV</span>GameVault</div><p class="muted" style="margin-top:10px">La tua piattaforma di valutazione giochi.</p></div><div><h4>Console</h4><p class="muted">Nintendo Switch</p><p class="muted">PS4</p><p class="muted">Xbox Series</p></div><div><h4>Supporto</h4><p class="muted">FAQ</p><p class="muted">Contatti</p><p class="muted">Termini e Privacy</p></div><div><h4>Social</h4><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><span class="chip">Discord</span><span class="chip">YouTube</span><span class="chip">Twitch</span><span class="chip">X</span></div></div></div></footer>
 		<script>
 			const games = [
-				{ title: "Minecraft", platforms: ["Nintendo Switch", "PlayStation 4", "PlayStation 3", "Xbox One", "PC"], genre: "Adventure", rating: 4.8, price: 29.99, tags: ["Sandbox", "Creative", "Co-op"] },
+				{ title: "Minecraft", platforms: ["Nintendo Switch", "PlayStation 4", "PlayStation 3", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Adventure", rating: 4.8, price: 29.99, tags: ["Sandbox", "Creative", "Co-op"] },
 				{ title: "The Legend of Zelda: Breath of the Wild", platforms: ["Nintendo Switch"], genre: "Adventure", rating: 4.9, price: 59.99, tags: ["Open World", "Story"] },
 				{ title: "Mario Kart 8 Deluxe", platforms: ["Nintendo Switch"], genre: "Racing", rating: 4.8, price: 59.99, tags: ["Party", "Multiplayer"] },
 				{ title: "Super Smash Bros. Ultimate", platforms: ["Nintendo Switch"], genre: "Action", rating: 4.8, price: 59.99, tags: ["Fighting", "Multiplayer"] },
@@ -165,12 +173,12 @@
 				{ title: "Dark Souls Remastered", platforms: ["PlayStation 4", "PC"], genre: "RPG", rating: 4.6, price: 39.99, tags: ["Soulslike", "Classic"] },
 				{ title: "Dark Souls II: Scholar of the First Sin", platforms: ["PlayStation 4", "Xbox One", "PC"], genre: "RPG", rating: 4.4, price: 29.99, tags: ["Soulslike", "Challenging"] },
 				{ title: "Dark Souls III", platforms: ["PlayStation 4", "Xbox One", "PC"], genre: "RPG", rating: 4.7, price: 39.99, tags: ["Soulslike", "Bosses"] },
-				{ title: "Sekiro: Shadows Die Twice", platforms: ["PlayStation 4", "Xbox One", "PC"], genre: "Action", rating: 4.7, price: 49.99, tags: ["Soulslike", "Samurai"] },
-				{ title: "Elden Ring", platforms: ["PlayStation 4", "Xbox One", "PC", "Steam Deck"], genre: "RPG", rating: 4.9, price: 59.99, tags: ["Open World", "Soulslike"] },
+				{ title: "Sekiro: Shadows Die Twice", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.7, price: 49.99, tags: ["Soulslike", "Samurai"] },
+				{ title: "Elden Ring", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "RPG", rating: 4.9, price: 59.99, tags: ["Open World", "Soulslike"] },
 				{ title: "Marvel's Spider-Man", platforms: ["PlayStation 4"], genre: "Action", rating: 4.8, price: 39.99, tags: ["Open World", "Superhero"] },
 				{ title: "Ghost of Tsushima", platforms: ["PlayStation 4"], genre: "Action", rating: 4.7, price: 49.99, tags: ["Samurai", "Open World"] },
 				{ title: "Grand Theft Auto V", platforms: ["PlayStation 4", "PlayStation 3", "Xbox One", "PC"], genre: "Action", rating: 4.7, price: 29.99, tags: ["Open World", "Crime"] },
-				{ title: "Red Dead Redemption 2", platforms: ["PlayStation 4", "Xbox One", "PC"], genre: "Adventure", rating: 4.8, price: 59.99, tags: ["Open World", "Story"] },
+				{ title: "Red Dead Redemption 2", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Adventure", rating: 4.8, price: 59.99, tags: ["Open World", "Story"] },
 				{ title: "Persona 5", platforms: ["PlayStation 4"], genre: "RPG", rating: 4.7, price: 39.99, tags: ["JRPG", "Stylish"] },
 				{ title: "The Last of Us Part II", platforms: ["PlayStation 4"], genre: "Adventure", rating: 4.6, price: 49.99, tags: ["Story", "Survival"] },
 				{ title: "Days Gone", platforms: ["PlayStation 4"], genre: "Action", rating: 4.2, price: 39.99, tags: ["Open World", "Survival"] },
@@ -217,23 +225,28 @@
 				{ title: "Pokémon Trading Card Game", platforms: ["Game Boy"], genre: "Strategy", rating: 4.2, price: 9.99, tags: ["Cards", "Classic"] },
 				{ title: "Pokémon Pinball", platforms: ["Game Boy"], genre: "Action", rating: 4.1, price: 8.99, tags: ["Arcade", "Classic"] },
 				{ title: "Pokémon Puzzle Challenge", platforms: ["Game Boy"], genre: "Strategy", rating: 4.0, price: 8.99, tags: ["Puzzle", "Classic"] },
-				{ title: "Forza Horizon 5", platforms: ["Xbox Series X|S"], genre: "Racing", rating: 4.8, price: 59.99, tags: ["Open World", "Multiplayer"] },
-				{ title: "Halo Infinite", platforms: ["Xbox Series X|S"], genre: "Action", rating: 4.4, price: 49.99, tags: ["Shooter", "Co-op"] },
-				{ title: "Starfield", platforms: ["Xbox Series X|S"], genre: "RPG", rating: 4.2, price: 69.99, tags: ["Sci-Fi", "Open World"] },
-				{ title: "Hi-Fi RUSH", platforms: ["Xbox Series X|S"], genre: "Action", rating: 4.6, price: 29.99, tags: ["Rhythm", "Stylish"] },
+				{ title: "Forza Horizon 5", platforms: ["Xbox Series X|S", "Xbox One", "PC"], genre: "Racing", rating: 4.8, price: 59.99, tags: ["Open World", "Multiplayer"] },
+				{ title: "Halo Infinite", platforms: ["Xbox Series X|S", "Xbox One", "PC"], genre: "Action", rating: 4.4, price: 49.99, tags: ["Shooter", "Co-op"] },
+				{ title: "Starfield", platforms: ["Xbox Series X|S", "PC"], genre: "RPG", rating: 4.2, price: 69.99, tags: ["Sci-Fi", "Open World"] },
+				{ title: "Hi-Fi RUSH", platforms: ["Xbox Series X|S", "PC"], genre: "Action", rating: 4.6, price: 29.99, tags: ["Rhythm", "Stylish"] },
 				{ title: "Gears 5", platforms: ["Xbox One"], genre: "Action", rating: 4.4, price: 39.99, tags: ["Co-op", "Shooter"] },
-				{ title: "Sea of Thieves", platforms: ["Xbox One"], genre: "Adventure", rating: 4.2, price: 29.99, tags: ["Co-op", "Pirates"] },
+				{ title: "Sea of Thieves", platforms: ["Xbox One", "Xbox Series X|S", "PC"], genre: "Adventure", rating: 4.2, price: 29.99, tags: ["Co-op", "Pirates"] },
 				{ title: "Forza Horizon 4", platforms: ["Xbox One"], genre: "Racing", rating: 4.6, price: 39.99, tags: ["Open World", "Multiplayer"] },
 				{ title: "Halo 5: Guardians", platforms: ["Xbox One"], genre: "Action", rating: 4.1, price: 19.99, tags: ["Shooter", "Co-op"] },
-				{ title: "Baldur's Gate 3", platforms: ["PC", "Steam Deck"], genre: "RPG", rating: 4.9, price: 59.99, tags: ["Party", "Story"] },
-				{ title: "Cyberpunk 2077", platforms: ["PC"], genre: "RPG", rating: 4.4, price: 59.99, tags: ["Sci-Fi", "Open World"] },
-				{ title: "The Witcher 3: Wild Hunt", platforms: ["PC", "Steam Deck"], genre: "RPG", rating: 4.9, price: 39.99, tags: ["Fantasy", "Open World"] },
+				{ title: "Baldur's Gate 3", platforms: ["PC", "Steam Deck", "Xbox Series X|S"], genre: "RPG", rating: 4.9, price: 59.99, tags: ["Party", "Story"] },
+				{ title: "Cyberpunk 2077", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "RPG", rating: 4.4, price: 59.99, tags: ["Sci-Fi", "Open World"] },
+				{ title: "The Witcher 3: Wild Hunt", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "RPG", rating: 4.9, price: 39.99, tags: ["Fantasy", "Open World"] },
 				{ title: "Counter-Strike 2", platforms: ["PC"], genre: "Action", rating: 4.6, price: 0.0, tags: ["Competitive", "Shooter"] },
 				{ title: "VALORANT", platforms: ["PC"], genre: "Action", rating: 4.3, price: 0.0, tags: ["Shooter", "Competitive"] },
-				{ title: "Hades", platforms: ["Steam Deck"], genre: "Indie", rating: 4.8, price: 24.99, tags: ["Roguelike", "Action"] },
-				{ title: "Hollow Knight", platforms: ["Steam Deck"], genre: "Indie", rating: 4.7, price: 14.99, tags: ["Metroidvania", "Action"] },
-				{ title: "Stardew Valley", platforms: ["Steam Deck"], genre: "Indie", rating: 4.8, price: 14.99, tags: ["Cozy", "Simulation"] },
-				{ title: "Celeste", platforms: ["Steam Deck"], genre: "Indie", rating: 4.7, price: 19.99, tags: ["Platform", "Story"] },
+				{ title: "Hades", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Indie", rating: 4.8, price: 24.99, tags: ["Roguelike", "Action"] },
+				{ title: "Hollow Knight", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Indie", rating: 4.7, price: 14.99, tags: ["Metroidvania", "Action"] },
+				{ title: "Hollow Knight: Silksong", platforms: ["Nintendo Switch", "PC", "Xbox Series X|S"], genre: "Indie", rating: 4.6, price: 49.99, tags: ["Metroidvania", "Action"] },
+				{ title: "Crash Team Racing Nitro-Fueled", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One"], genre: "Racing", rating: 4.4, price: 39.99, tags: ["Arcade", "Multiplayer"] },
+				{ title: "Crash Bandicoot 4: It's About Time", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "PC"], genre: "Adventure", rating: 4.5, price: 59.99, tags: ["Platform", "Story"] },
+				{ title: "Crash Team Rumble", platforms: ["PlayStation 4", "Xbox One"], genre: "Action", rating: 4.0, price: 29.99, tags: ["Multiplayer", "Competitive"] },
+				{ title: "Forza Horizon 6", platforms: ["Xbox Series X|S", "PC"], genre: "Racing", rating: 4.7, price: 69.99, tags: ["Open World", "Multiplayer"] },
+				{ title: "Stardew Valley", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Indie", rating: 4.8, price: 14.99, tags: ["Cozy", "Simulation"] },
+				{ title: "Celeste", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Indie", rating: 4.7, price: 19.99, tags: ["Platform", "Story"] },
 				{ title: "Super Mario 3D World", platforms: ["Wii U"], genre: "Adventure", rating: 4.6, price: 29.99, tags: ["Platform", "Co-op"] },
 				{ title: "Mario Kart 8", platforms: ["Wii U"], genre: "Racing", rating: 4.6, price: 29.99, tags: ["Party", "Multiplayer"] },
 				{ title: "Splatoon", platforms: ["Wii U"], genre: "Action", rating: 4.3, price: 24.99, tags: ["Multiplayer", "Competitive"] },
@@ -241,9 +254,107 @@
 				{ title: "Pokémon Rumble U", platforms: ["Wii U"], genre: "Action", rating: 3.8, price: 14.99, tags: ["Arcade", "Co-op"] },
 				{ title: "Grand Theft Auto: San Andreas", platforms: ["PS2"], genre: "Action", rating: 4.7, price: 14.99, tags: ["Classic", "Open World"] },
 				{ title: "God of War II", platforms: ["PS2"], genre: "Action", rating: 4.7, price: 14.99, tags: ["Mythology", "Epic"] },
-				{ title: "Shadow of the Colossus", platforms: ["PlayStation 4"], genre: "Adventure", rating: 4.8, price: 29.99, tags: ["Epic", "Remake"] }
+				{ title: "Shadow of the Colossus", platforms: ["PlayStation 4"], genre: "Adventure", rating: 4.8, price: 29.99, tags: ["Epic", "Remake"] },
+				{ title: "God of War Ragnarök", platforms: ["PlayStation 4"], genre: "Action", rating: 4.8, price: 69.99, tags: ["Mythology", "Narrative"] },
+				{ title: "The Legend of Zelda: Tears of the Kingdom", platforms: ["Nintendo Switch"], genre: "Adventure", rating: 4.9, price: 69.99, tags: ["Open World", "Exploration"] },
+				{ title: "Resident Evil Village", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.5, price: 59.99, tags: ["Horror", "Survival"] },
+				{ title: "Horizon Forbidden West", platforms: ["PlayStation 4"], genre: "Action", rating: 4.7, price: 69.99, tags: ["Open World", "Sci-Fi"] },
+				{ title: "Spider-Man: Miles Morales", platforms: ["PlayStation 4"], genre: "Action", rating: 4.6, price: 49.99, tags: ["Superhero", "Open World"] },
+				{ title: "It Takes Two", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Nintendo Switch"], genre: "Adventure", rating: 4.7, price: 39.99, tags: ["Co-op", "Story"] },
+				{ title: "Psychonauts 2", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Adventure", rating: 4.5, price: 59.99, tags: ["Platform", "Story"] },
+				{ title: "Deathloop", platforms: ["Xbox Series X|S", "Xbox One", "PC"], genre: "Action", rating: 4.4, price: 59.99, tags: ["Time Loop", "Action"] },
+				{ title: "Ratchet & Clank: Rift Apart", platforms: ["PC"], genre: "Action", rating: 4.7, price: 59.99, tags: ["Platform", "Sci-Fi"] },
+				{ title: "Final Fantasy VII Rebirth", platforms: ["PC"], genre: "RPG", rating: 4.8, price: 69.99, tags: ["JRPG", "Story"] },
+				{ title: "Microsoft Flight Simulator", platforms: ["Xbox Series X|S", "Xbox One", "PC"], genre: "Adventure", rating: 4.6, price: 59.99, tags: ["Simulation", "Flight"] },
+				{ title: "Genshin Impact", platforms: ["PlayStation 4", "PC"], genre: "RPG", rating: 4.3, price: 0.0, tags: ["Open World", "Free-to-play"] },
+				{ title: "Roblox", platforms: ["Xbox One", "Xbox Series X|S", "PC"], genre: "Adventure", rating: 4.1, price: 0.0, tags: ["User-Generated", "Online"] },
+				{ title: "Fortnite", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.2, price: 0.0, tags: ["Battle Royale", "Multiplayer"] },
+				{ title: "Call of Duty: Modern Warfare II", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.3, price: 69.99, tags: ["Shooter", "Multiplayer"] },
+				{ title: "Diablo IV", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "RPG", rating: 4.4, price: 69.99, tags: ["Action RPG", "Co-op"] },
+				{ title: "Street Fighter 6", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.6, price: 59.99, tags: ["Fighting", "Competitive"] },
+				{ title: "Tekken 8", platforms: ["Xbox Series X|S", "PC"], genre: "Action", rating: 4.6, price: 69.99, tags: ["Fighting", "Competitive"] },
+				{ title: "Monster Hunter Rise", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.5, price: 39.99, tags: ["Hunting", "Co-op"] },
+				{ title: "Persona 5 Royal", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "RPG", rating: 4.8, price: 59.99, tags: ["JRPG", "Story"] },
+				{ title: "Cuphead", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Action", rating: 4.7, price: 19.99, tags: ["Run & Gun", "Co-op"] },
+				{ title: "Ori and the Will of the Wisps", platforms: ["Nintendo Switch", "Xbox One", "Xbox Series X|S", "PC"], genre: "Adventure", rating: 4.7, price: 29.99, tags: ["Platform", "Story"] },
+				{ title: "Doom Eternal", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Action", rating: 4.6, price: 59.99, tags: ["Shooter", "Fast"] },
+				{ title: "Assassin's Creed Valhalla", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.4, price: 59.99, tags: ["Open World", "Vikings"] },
+				{ title: "Far Cry 6", platforms: ["PlayStation 4", "Xbox One", "Xbox Series X|S", "PC"], genre: "Action", rating: 4.2, price: 59.99, tags: ["Open World", "Shooter"] },
+				{ title: "Slay the Spire", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Strategy", rating: 4.6, price: 24.99, tags: ["Deckbuilder", "Roguelike"] },
+				{ title: "Vampire Survivors", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "Xbox Series X|S", "PC", "Steam Deck"], genre: "Indie", rating: 4.5, price: 4.99, tags: ["Roguelike", "Arcade"] },
+				{ title: "Dave the Diver", platforms: ["Nintendo Switch", "PC"], genre: "Adventure", rating: 4.6, price: 19.99, tags: ["Exploration", "Cozy"] },
+				{ title: "Undertale", platforms: ["Nintendo Switch", "PlayStation 4", "Xbox One", "PC"], genre: "RPG", rating: 4.7, price: 14.99, tags: ["Indie", "Story"] },
+				{ title: "Skylanders: Spyro's Adventure", platforms: ["PlayStation 3", "Xbox One", "Wii U"], genre: "Action", rating: 4.2, price: 29.99, tags: ["Toys-to-Life", "Co-op"] },
+				{ title: "Skylanders Giants", platforms: ["PlayStation 3", "Xbox One", "Wii U"], genre: "Action", rating: 4.2, price: 29.99, tags: ["Toys-to-Life", "Co-op"] },
+				{ title: "Skylanders Swap Force", platforms: ["PlayStation 3", "PlayStation 4", "Xbox One", "Wii U"], genre: "Action", rating: 4.3, price: 39.99, tags: ["Toys-to-Life", "Adventure"] },
+				{ title: "Skylanders Trap Team", platforms: ["PlayStation 3", "PlayStation 4", "Xbox One", "Wii U"], genre: "Action", rating: 4.3, price: 39.99, tags: ["Toys-to-Life", "Adventure"] },
+				{ title: "Skylanders SuperChargers", platforms: ["PlayStation 3", "PlayStation 4", "Xbox One", "Wii U"], genre: "Action", rating: 4.1, price: 29.99, tags: ["Toys-to-Life", "Vehicles"] },
+				{ title: "Skylanders Imaginators", platforms: ["PlayStation 3", "PlayStation 4", "Xbox One", "Wii U"], genre: "Action", rating: 4.1, price: 39.99, tags: ["Toys-to-Life", "Creative"] }
 			];
-			const gameDetails = {};
+			const gameDetails = {
+				"Elden Ring": "GDR d’azione open world ambientato nelle Terre Intermedie: esplori liberamente dungeon, rovine e castelli, sconfiggendo boss monumentali e potenziando il personaggio tramite build personalizzate.",
+				"God of War Ragnarök": "Avventura action narrativa che segue Kratos e Atreus nei Regni nordici: combattimenti brutali, enigmi ambientali e una storia epica sul destino e sul legame padre-figlio.",
+				"The Last of Us Part II": "Action-adventure cinematografico post‑apocalittico: alterna esplorazione, furtività e scontri intensi mentre racconta una storia matura di vendetta e perdita.",
+				"Cyberpunk 2077": "RPG open world futuristico a Night City: missioni a scelta, cyber‑impianti, sparatorie e hacking in una trama che ruota attorno all’identità e al potere.",
+				"The Legend of Zelda: Tears of the Kingdom": "Avventura open world che espande Hyrule e i cieli: enigmi creativi, dungeon, esplorazione verticale e un sistema di costruzione di oggetti e veicoli.",
+				"Animal Crossing: New Horizons": "Simulazione rilassante di vita su un’isola: raccolta risorse, arredamento, gestione del villaggio e attività quotidiane in tempo reale.",
+				"Metroid Dread": "Metroidvania sci‑fi con esplorazione non lineare e backtracking: Samus affronta i robot E.M.M.I. in un’esperienza tesa e veloce.",
+				"Baldur's Gate 3": "GDR a turni basato su D&D: gruppo di personaggi, scelte narrative profonde, combattimenti tattici e un mondo reattivo alle tue decisioni.",
+				"Forza Horizon 5": "Racing open world ambientato in Messico: centinaia di auto, eventi dinamici, esplorazione libera e gare arcade ad alto impatto visivo.",
+				"Hades": "Roguelike d’azione isometrico: fughe dall’Ade con combattimenti frenetici, potenziamenti casuali e una storia che evolve a ogni tentativo.",
+				"Ghost of Tsushima": "Action open world nel Giappone feudale: esplorazione, duelli di katana, stealth e una narrativa incentrata sull’onore del samurai.",
+				"Resident Evil Village": "Survival horror in prima persona: esplorazione di un villaggio europeo, enigmi e combattimenti contro creature e boss memorabili.",
+				"Horizon Forbidden West": "Action open world post‑apocalittico: Aloy esplora nuove regioni, caccia macchine gigantesche e affronta una minaccia globale.",
+				"Spider-Man: Miles Morales": "Action open world supereroistico: acrobazie, combattimenti e abilità elettriche in una storia di crescita personale a New York.",
+				"It Takes Two": "Co‑op narrativo obbligatorio: due giocatori affrontano livelli creativi e meccaniche sempre diverse in una storia su una coppia in crisi.",
+				"Hollow Knight": "Metroidvania disegnato a mano: esplorazione profonda di Hallownest, combattimenti precisi e lore ambientale misteriosa.",
+				"Hollow Knight: Silksong": "Metroidvania d’azione con protagonista Hornet: esplorazione di un nuovo regno, platform impegnativi, combattimenti rapidi e strumenti craftabili.",
+				"Crash Team Racing Nitro-Fueled": "Racing arcade in stile kart con personaggi di Crash: tracciati classici rimasterizzati, drifting tecnico e modalità multiplayer locali/online.",
+				"Crash Bandicoot 4: It's About Time": "Platform 3D che prosegue la saga classica: livelli impegnativi, nuove maschere con poteri temporali e gameplay preciso.",
+				"Crash Team Rumble": "Brawler competitivo a squadre: raccogli frutti Wumpa, difendi la tua base e sblocca abilità in match veloci.",
+				"Forza Horizon 6": "Racing open world con festival dinamico: esplori una nuova ambientazione, sblocchi auto, personalizzi gare e affronti eventi stagionali.",
+				"Stardew Valley": "Simulazione agricola con elementi RPG: coltivi, allevi, esplori miniere e costruisci relazioni con la comunità.",
+				"Super Mario Odyssey": "Platform 3D a mondi aperti: Mario esplora regni diversi usando Cappy per possedere nemici e risolvere enigmi.",
+				"Mario Kart 8 Deluxe": "Racing arcade con tracciati iconici e modalità multiplayer: drifting, oggetti e piste antigravità.",
+				"Halo Infinite": "FPS sci‑fi con campagna semi‑open e multiplayer: scontri su larga scala, armi iconiche e veicoli del franchise.",
+				"Psychonauts 2": "Platform narrativo in 3D: entri nelle menti dei personaggi con livelli surreali e temi psicologici.",
+				"Deathloop": "Action in loop temporale: elimini bersagli in un giorno ripetuto, combinando stealth, armi e poteri.",
+				"Ratchet & Clank: Rift Apart": "Action platform con salti dimensionali: armi creative, esplorazione e una grafica spettacolare.",
+				"Final Fantasy VII Rebirth": "JRPG epico con combattimento ibrido: espande la storia di Cloud con esplorazione ampia e nuovi personaggi.",
+				"Starfield": "RPG spaziale open world: esplori pianeti, personalizzi la nave e vivi missioni in un universo sci‑fi.",
+				"Sea of Thieves": "Avventura piratesca multiplayer: esplorazione in mare aperto, cacce al tesoro e combattimenti navali cooperativi.",
+				"Microsoft Flight Simulator": "Simulatore di volo realistico: voli su una ricostruzione del pianeta con modelli fisici e cockpit dettagliati.",
+				"Genshin Impact": "Action RPG open world: esplorazione, combattimenti basati su elementi e un roster di personaggi collezionabili.",
+				"Minecraft": "Sandbox creativo e survival: costruisci, esplori biomi, estrai risorse e affronti mob in un mondo procedurale.",
+				"Roblox": "Piattaforma di giochi user‑generated: milioni di esperienze create dalla community, con social e personalizzazione.",
+				"Fortnite": "Battle royale a squadre: costruzione, shooting competitivo e aggiornamenti costanti con eventi live.",
+				"Call of Duty: Modern Warfare II": "FPS militare con campagna cinematografica e multiplayer competitivo basato su progressione e loadout.",
+				"Diablo IV": "Action RPG dark fantasy: esplorazione open world, dungeon, bottino e classi personalizzabili.",
+				"Street Fighter 6": "Picchiaduro competitivo: roster ampio, sistema di combattimento moderno e modalità World Tour.",
+				"Tekken 8": "Fighting 3D con focus sull’aggressività: combo profonde, personaggi iconici e netcode competitivo.",
+				"Monster Hunter Rise": "Action con caccia a mostri: missioni cooperative, crafting di equipaggiamento e mobilità verticale con Wirebug.",
+				"Persona 5 Royal": "JRPG con vita scolastica e dungeon: turn‑based stylish, social link e una trama matura.",
+				"Cuphead": "Run & gun ispirato ai cartoni anni ’30: boss fight impegnative e stile artistico unico.",
+				"Celeste": "Platform precision con forte narrativa: scalata della montagna e tematiche personali su ansia e resilienza.",
+				"Ori and the Will of the Wisps": "Metroidvania fiabesco: piattaforme fluide, esplorazione e storia emotiva.",
+				"Sekiro: Shadows Die Twice": "Action intenso con parry e posture: ambientazione giapponese e boss punitivi.",
+				"Red Dead Redemption 2": "Avventura open world western: narrazione profonda, esplorazione libera e attività realistiche.",
+				"The Witcher 3: Wild Hunt": "GDR open world: missioni con scelte morali, caccia ai mostri e un mondo ricco di storie.",
+				"Doom Eternal": "FPS frenetico: mobilità elevata, armi devastanti e combattimenti aggressivi contro orde demoniache.",
+				"Assassin's Creed Valhalla": "Action open world ambientato nell’era vichinga: saccheggi, esplorazione e costruzione del tuo insediamento.",
+				"Far Cry 6": "FPS open world: guerriglia in un’isola caraibica, armi improvvisate e missioni principali/secondarie.",
+				"Hi-Fi RUSH": "Action ritmo‑based: combattimenti sincronizzati alla musica con stile cartoon e combo fluide.",
+				"Slay the Spire": "Roguelike deck‑builder: costruisci un mazzo, affronti nemici a turni e scegli percorsi strategici.",
+				"Vampire Survivors": "Roguelite arcade: sopravvivi a ondate di nemici con build automatiche e potenziamenti.",
+				"Dave the Diver": "Avventura e gestione: pesca subacquea di giorno e gestione di un ristorante di sushi di notte.",
+				"Undertale": "GDR narrativo a scelte: incontri personaggi memorabili, puoi combattere o risparmiare i nemici e la storia cambia in base alle tue decisioni.",
+				"Skylanders: Spyro's Adventure": "Action adventure toys‑to‑life: posizioni le figure sul Portale per evocare Skylanders e affrontare livelli, puzzle e combattimenti cooperativi.",
+				"Skylanders Giants": "Sequel toys‑to‑life con creature giganti: introduce personaggi più grandi e livelli ricchi di puzzle e collezionabili.",
+				"Skylanders Swap Force": "Action adventure con personaggi intercambiabili: combini metà diverse dei personaggi per creare abilità uniche e risolvere sfide.",
+				"Skylanders Trap Team": "Toys‑to‑life con cattura dei boss: intrappoli i cattivi e li usi come personaggi giocabili, con nuove aree e livelli.",
+				"Skylanders SuperChargers": "Avventura action con veicoli: gareggi, combatti e esplori usando mezzi personalizzabili insieme agli Skylanders.",
+				"Skylanders Imaginators": "Capitolo creativo: costruisci il tuo Skylander con classi e poteri personalizzati, affrontando campagne e missioni aggiuntive."
+			};
 			const catalog = document.getElementById("catalog");
 			const searchInput = document.getElementById("search");
 			const platformSelect = document.getElementById("platform");
@@ -254,10 +365,13 @@
 			const modal = document.getElementById("game-modal");
 			const modalClose = document.getElementById("modal-close");
 			const modalTitle = document.getElementById("modal-title");
+			const modalCover = document.getElementById("modal-cover");
+			const modalImage = document.getElementById("modal-image");
 			const modalPlatform = document.getElementById("modal-platform");
 			const modalGenre = document.getElementById("modal-genre");
 			const modalRating = document.getElementById("modal-rating");
 			const modalPrice = document.getElementById("modal-price");
+			const modalCountdown = document.getElementById("modal-countdown");
 			const modalTags = document.getElementById("modal-tags");
 			const modalDescription = document.getElementById("modal-description");
 			const modalDetails = document.getElementById("modal-details");
@@ -288,6 +402,68 @@
 				game.detailedDescription = gameDetails[game.title]
 					?? `Parla di un’esperienza ${genreLabel} con focus su ${tagLabel}, tra obiettivi chiari, progressione e momenti memorabili.`;
 			});
+			const imageOverrides = {
+				"Grand Theft Auto V": "gtaV.jpg",
+				"Grand Theft Auto: San Andreas": "gta_san_andreas.jpg",
+				"Assassin's Creed Valhalla": "assasins_creed_valhalla.jpg",
+				"Baldur's Gate 3": "baldurs_gate_3.jpg",
+				"Marvel's Spider-Man": "marvel_spider_man.jpg",
+				"Ratchet & Clank: Rift Apart": "ratchet_e_clank_rift_apart.jpg",
+				"Call of Duty: Modern Warfare II": "call_of_duty_modern_warfare_2.jpg",
+				"The Last of Us Part II": "the_last_of_us_part_2.jpg",
+				"The Legend of Zelda: Breath of the Wild": "Zelda.jpg",
+				"The Legend of Zelda: Tears of the Kingdom": "zelda_tears_of_the_kingdom.jpg",
+				"Animal Crossing: New Horizons": "animal_crossing.jpg",
+				"Pokémon Legends: Arceus": "pokemon_arceus.jpg",
+				"Pokémon Sun": "pokemon_sole.jpg",
+				"Pokémon Moon": "pokemon_luna.jpg",
+				"Pokémon Ultra Sun": "pokemon_ultra_sole.jpg",
+				"Pokémon Ultra Moon": "pokemon_ultra_luna.jpg",
+				"Pokémon Let's Go, Pikachu!": "pokemon_letgo_pikachu.jpg",
+				"Pokémon Let's Go, Eevee!": "pokemon_letgo_eevee.jpg",
+				"Pokkén Tournament": "pokken_tournament.jpg",
+				"Pokkén Tournament DX": "pokken_tournament_dx.jpg",
+				"Dark Souls II: Scholar of the First Sin": "dark_souls_2.jpg",
+				"Dark Souls III": "dark_souls_3.jpg",
+				"Demon's Souls": "demons_souls.jpg",
+				"Sekiro: Shadows Die Twice": "sekiro.jpg",
+				"God of War III": "god_of_war_3.jpg",
+				"God of War II": "god_of_war_2.jpg",
+				"Halo 5: Guardians": "halo_5_guardian.jpg",
+				"Hollow Knight": "hollow_knite.jpg",
+				"Hollow Knight: Silksong": "hollow_knite_silksong.jpg",
+				"Ori and the Will of the Wisps": "oni_and_the_will_of_the_wisps.jpg",
+				"Microsoft Flight Simulator": "microsoft_flight_simulaitor.jpg",
+				"The Witcher 3: Wild Hunt": "the_witcher_3.jpg",
+				"Diablo IV": "diablo_4.jpg",
+				"Uncharted 2: Among Thieves": "uncharted_2.jpg",
+				"Uncharted 4: A Thief's End": "uncharted_4.jpg",
+				"Luigi's Mansion 3": "luigi_mansion_3.jpg",
+				"Crash Team Racing Nitro-Fueled": "crash_bandicoot_team_racing_nitro_fueled.jpg",
+				"Crash Bandicoot 4: It's About Time": "crash_bandicoot_4.jpg",
+				"Crash Team Rumble": "crash_bandicoot_team_rumble.jpg",
+				"Skylanders: Spyro's Adventure": "skylander_spyro_adventure.jpg",
+				"Skylanders Giants": "skylander_giants.jpg",
+				"Skylanders Swap Force": "skylander_swap_force.jpg",
+				"Skylanders Trap Team": "skylander_trap_team.jpg",
+				"Skylanders SuperChargers": "skylander_superchargers.jpg",
+				"Skylanders Imaginators": "skylander_imaginators.jpg",
+				"Super Smash Bros. Ultimate": "super_smash_bros.jpg"
+				,
+				"Forza Horizon 6": "forzahorizon6.jpg"
+			};
+			const toSnakeCase = (value) => value
+				.normalize("NFD")
+				.replace(/[\u0300-\u036f]/g, "")
+				.toLowerCase()
+				.replace(/&/g, "and")
+				.replace(/[^a-z0-9]+/g, "_")
+				.replace(/(^_|_$)/g, "");
+			const getImagePath = (title) => {
+				const override = imageOverrides[title];
+				const filename = override ?? `${toSnakeCase(title)}.jpg`;
+				return `images/elenco_giochi/${filename}`;
+			};
 			const renderGames = (items) => {
 				catalog.innerHTML = "";
 				items.forEach((game) => {
@@ -306,10 +482,31 @@
 						</div>`;
 					const openModal = () => {
 						modalTitle.textContent = game.title;
+						if (modalImage && modalCover) {
+							modalCover.classList.remove("is-fallback");
+							modalImage.alt = game.title;
+							modalImage.src = getImagePath(game.title);
+							modalImage.onerror = () => {
+								modalCover.classList.add("is-fallback");
+								modalImage.removeAttribute("src");
+							};
+							modalImage.onload = () => {
+								modalCover.classList.remove("is-fallback");
+							};
+						}
 						modalPlatform.textContent = game.platformLabel;
 						modalGenre.textContent = game.genre;
 						modalRating.textContent = `${game.rating} ★`;
 						modalPrice.textContent = `€${game.price.toFixed(2)}`;
+						if (modalCountdown) {
+							if (game.title === "Forza Horizon 6") {
+								modalCountdown.textContent = "Manca 96 giorni, 08 ore, 29 minuti";
+								modalCountdown.hidden = false;
+							} else {
+								modalCountdown.hidden = true;
+								modalCountdown.textContent = "";
+							}
+						}
 						modalDescription.textContent = game.description;
 						modalDetails.textContent = game.detailedDescription;
 						modalDetails.style.display = "none";
@@ -381,7 +578,7 @@
 			const setTheme = (theme) => {
 				document.documentElement.setAttribute("data-theme", theme);
 				if (themeToggle) {
-					themeToggle.textContent = theme === "light" ? "🌞" : "🌙";
+					themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
 					themeToggle.setAttribute("aria-label", theme === "light" ? "Passa a tema scuro" : "Passa a tema chiaro");
 				}
 				localStorage.setItem(THEME_KEY, theme);

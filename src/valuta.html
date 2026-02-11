@@ -290,7 +290,7 @@
       const setTheme = (theme) => {
         document.documentElement.setAttribute("data-theme", theme);
         if (themeToggle) {
-          themeToggle.textContent = theme === "light" ? "🌞" : "🌙";
+          themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
           themeToggle.setAttribute(
             "aria-label",
             theme === "light" ? "Passa a tema scuro" : "Passa a tema chiaro"
