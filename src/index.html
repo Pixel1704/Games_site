@@ -464,6 +464,29 @@
 				const filename = override ?? `${toSnakeCase(title)}.jpg`;
 				return `images/elenco_giochi/${filename}`;
 			};
+			const COUNTDOWN_KEY = "gamevaultForzaCountdown";
+			const getCountdownTarget = () => {
+				const saved = Number(localStorage.getItem(COUNTDOWN_KEY) || 0);
+				if (saved && Number.isFinite(saved)) return saved;
+				const now = Date.now();
+				const target = now + (96 * 24 * 60 * 60 * 1000) + (8 * 60 * 60 * 1000) + (17 * 60 * 1000);
+				localStorage.setItem(COUNTDOWN_KEY, String(target));
+				return target;
+			};
+			const formatCountdown = (ms) => {
+				const totalMinutes = Math.max(0, Math.floor(ms / 60000));
+				const days = Math.floor(totalMinutes / (24 * 60));
+				const hours = Math.floor((totalMinutes % (24 * 60)) / 60);
+				const minutes = totalMinutes % 60;
+				const pad = (value) => String(value).padStart(2, "0");
+				return `Manca ${days} giorni, ${pad(hours)} ore, ${pad(minutes)} minuti`;
+			};
+			const updateCountdown = () => {
+				if (!modalCountdown || modalCountdown.hidden) return;
+				const remaining = getCountdownTarget() - Date.now();
+				modalCountdown.textContent = formatCountdown(remaining);
+			};
+			setInterval(updateCountdown, 60000);
 			const renderGames = (items) => {
 				catalog.innerHTML = "";
 				items.forEach((game) => {
@@ -500,8 +523,8 @@
 						modalPrice.textContent = `€${game.price.toFixed(2)}`;
 						if (modalCountdown) {
 							if (game.title === "Forza Horizon 6") {
-								modalCountdown.textContent = "Manca 96 giorni, 08 ore, 29 minuti";
 								modalCountdown.hidden = false;
+								updateCountdown();
 							} else {
 								modalCountdown.hidden = true;
 								modalCountdown.textContent = "";
